@@ -22,6 +22,10 @@ class Domain(object):
 
         return domain('{sub}.{domain}'.format(sub=sub, domain=self.netloc))
 
+    @property
+    def www(self):
+        return self.subdomain('www')
+
     def __str__(self):
         return self.netloc
 

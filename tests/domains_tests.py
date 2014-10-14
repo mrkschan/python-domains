@@ -36,3 +36,11 @@ def test_subdomain():
             str(domains.domain('http://example.com').subdomain('www')))
     assert (expected ==
             str(domains.domain('https://www.example.com').subdomain('www')))
+
+
+def test_www():
+    expected = 'www.example.com'
+    assert expected == str(domains.domain('example.com').www)
+    assert expected == str(domains.domain('www.example.com').www)
+    assert expected == str(domains.domain('http://example.com').www)
+    assert expected == str(domains.domain('https://www.example.com').www)
