@@ -13,6 +13,15 @@ class Domain(object):
         parts = urlparse.urlparse(url)
         self.netloc = parts.netloc
 
+    def subdomain(self, sub):
+        sub = sub.rstrip('.')
+
+        lpart, sep, rpart = self.netloc.partition('.')
+        if lpart == sub:
+            return self
+
+        return domain('{sub}.{domain}'.format(sub=sub, domain=self.netloc))
+
     def __str__(self):
         return self.netloc
 

@@ -26,3 +26,13 @@ def test_domain():
     assert expected == str(domains.domain('http://www.example.com'))
     assert expected == str(domains.domain('ftp://www.example.com/'))
     assert expected == str(domains.domain('ftps://www.example.com/'))
+
+
+def test_subdomain():
+    expected = 'www.example.com'
+    assert expected == str(domains.domain('example.com').subdomain('www'))
+    assert expected == str(domains.domain('www.example.com').subdomain('www'))
+    assert (expected ==
+            str(domains.domain('http://example.com').subdomain('www')))
+    assert (expected ==
+            str(domains.domain('https://www.example.com').subdomain('www')))
