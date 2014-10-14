@@ -1,13 +1,28 @@
-
 from nose.tools import *
 import domains
 
+
 def setup():
-    print "SETUP!"
+    pass
+
 
 def teardown():
-    print "TEAR DOWN!"
+    pass
 
-def test_basic():
-    print "I RAN!"
-    
+
+def test_domain():
+    expected = 'example.com'
+    assert expected == str(domains.domain('example.com'))
+    assert expected == str(domains.domain('http://example.com'))
+    assert expected == str(domains.domain('https://example.com'))
+    assert expected == str(domains.domain('ftp://example.com'))
+    assert expected == str(domains.domain('ftps://example.com'))
+
+    expected = 'www.example.com'
+    assert expected == str(domains.domain('www.example.com'))
+    assert expected == str(domains.domain('https://www.example.com'))
+    assert expected == str(domains.domain('http://www.example.com'))
+    assert expected == str(domains.domain('https://www.example.com'))
+    assert expected == str(domains.domain('http://www.example.com'))
+    assert expected == str(domains.domain('ftp://www.example.com/'))
+    assert expected == str(domains.domain('ftps://www.example.com/'))
