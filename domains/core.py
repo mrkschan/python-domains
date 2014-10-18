@@ -2,7 +2,7 @@ import re
 import urlparse
 
 
-_scheme_re = re.compile('^\w+://')
+_scheme_re = re.compile('^\w*:?//')
 
 
 class Domain(object):
