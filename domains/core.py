@@ -13,6 +13,10 @@ class Domain(object):
         parts = urlparse.urlparse(url)
         netloc = parts.netloc
 
+        # Ignore username:password
+        lpart, sep, rpart = netloc.rpartition('@')
+        netloc = rpart
+
         # *.example.com to example.com
         if netloc.startswith('*.'):
             netloc = netloc[2:]

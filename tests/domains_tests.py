@@ -17,16 +17,18 @@ def test_domain():
     assert expected == str(domains.domain('//example.com'))
     assert expected == str(domains.domain('http://example.com'))
     assert expected == str(domains.domain('https://example.com'))
-    assert expected == str(domains.domain('ftp://example.com'))
-    assert expected == str(domains.domain('ftps://example.com'))
+    assert expected == str(domains.domain('ftp://user:password@example.com'))
+    assert expected == str(domains.domain('ftps://user:password@example.com'))
 
     expected = 'www.example.com'
     assert expected == str(domains.domain('www.example.com'))
     assert expected == str(domains.domain('//www.example.com'))
     assert expected == str(domains.domain('http://www.example.com'))
     assert expected == str(domains.domain('https://www.example.com'))
-    assert expected == str(domains.domain('ftp://www.example.com/'))
-    assert expected == str(domains.domain('ftps://www.example.com/'))
+    assert (expected ==
+            str(domains.domain('ftp://user:password@www.example.com/')))
+    assert (expected ==
+            str(domains.domain('ftps://user:password@www.example.com/')))
 
 
 def test_subdomain():
