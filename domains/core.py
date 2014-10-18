@@ -11,7 +11,13 @@ class Domain(object):
             url = 'http://{url}'.format(url=url)
 
         parts = urlparse.urlparse(url)
-        self.netloc = parts.netloc
+        netloc = parts.netloc
+
+        # *.example.com to example.com
+        if netloc.startswith('*.'):
+            netloc = netloc[2:]
+
+        self.netloc = netloc
 
     def subdomain(self, sub):
         sub = sub.rstrip('.')
