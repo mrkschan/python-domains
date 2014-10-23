@@ -4,17 +4,21 @@ try:
 except ImportError:
     from distutils.core import setup
 
+
+import domains
+
+
 config = {
-    'description': 'My Project',
-    'author': 'My Name',
-    'url': 'URL to get it at.',
-    'download_url': 'Where to download it.',
-    'author_email': 'My email.',
-    'version': '0.1',
+    'description': 'Domain name utilities',
+    'author': 'mrkschan',
+    'url': 'https://github.com/mrkschan/python-domains',
+    'download_url': 'https://github.com/mrkschan/python-domains',
+    'author_email': 'mrkschan@gmail.com',
+    'version': domains.__version__,
     'install_requires': ['nose'],
     'packages': ['domains'],
     'scripts': [],
-    'name': 'projectname'
+    'name': 'python-domains'
 }
 
 setup(**config)
