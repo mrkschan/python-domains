@@ -36,6 +36,9 @@ class Domain(object):
     def www(self):
         return self.subdomain('www')
 
+    def str(self):
+        return str(self)
+
     def __str__(self):
         return self.netloc
 

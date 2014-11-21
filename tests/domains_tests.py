@@ -12,40 +12,40 @@ def teardown():
 
 def test_domain():
     expected = 'example.com'
-    assert expected == str(domains.domain('example.com'))
-    assert expected == str(domains.domain('*.example.com'))
-    assert expected == str(domains.domain('//example.com'))
-    assert expected == str(domains.domain('http://example.com'))
-    assert expected == str(domains.domain('https://example.com'))
-    assert expected == str(domains.domain('ftp://user:password@example.com'))
-    assert expected == str(domains.domain('ftps://user:password@example.com'))
+    assert expected == domains.domain('example.com').str()
+    assert expected == domains.domain('*.example.com').str()
+    assert expected == domains.domain('//example.com').str()
+    assert expected == domains.domain('http://example.com').str()
+    assert expected == domains.domain('https://example.com').str()
+    assert expected == domains.domain('ftp://user:password@example.com').str()
+    assert expected == domains.domain('ftps://user:password@example.com').str()
 
     expected = 'www.example.com'
-    assert expected == str(domains.domain('www.example.com'))
-    assert expected == str(domains.domain('//www.example.com'))
-    assert expected == str(domains.domain('http://www.example.com'))
-    assert expected == str(domains.domain('https://www.example.com'))
+    assert expected == domains.domain('www.example.com').str()
+    assert expected == domains.domain('//www.example.com').str()
+    assert expected == domains.domain('http://www.example.com').str()
+    assert expected == domains.domain('https://www.example.com').str()
     assert (expected ==
-            str(domains.domain('ftp://user:password@www.example.com/')))
+            domains.domain('ftp://user:password@www.example.com/').str())
     assert (expected ==
-            str(domains.domain('ftps://user:password@www.example.com/')))
+            domains.domain('ftps://user:password@www.example.com/').str())
 
 
 def test_subdomain():
     expected = 'www.example.com'
-    assert expected == str(domains.domain('example.com').subdomain('www'))
-    assert expected == str(domains.domain('*.example.com').subdomain('www'))
-    assert expected == str(domains.domain('www.example.com').subdomain('www'))
+    assert expected == domains.domain('example.com').subdomain('www').str()
+    assert expected == domains.domain('*.example.com').subdomain('www').str()
+    assert expected == domains.domain('www.example.com').subdomain('www').str()
     assert (expected ==
-            str(domains.domain('http://example.com').subdomain('www')))
+            domains.domain('http://example.com').subdomain('www').str())
     assert (expected ==
-            str(domains.domain('https://www.example.com').subdomain('www')))
+            domains.domain('https://www.example.com').subdomain('www').str())
 
 
 def test_www():
     expected = 'www.example.com'
-    assert expected == str(domains.domain('example.com').www)
-    assert expected == str(domains.domain('*.example.com').www)
-    assert expected == str(domains.domain('www.example.com').www)
-    assert expected == str(domains.domain('http://example.com').www)
-    assert expected == str(domains.domain('https://www.example.com').www)
+    assert expected == domains.domain('example.com').www.str()
+    assert expected == domains.domain('*.example.com').www.str()
+    assert expected == domains.domain('www.example.com').www.str()
+    assert expected == domains.domain('http://example.com').www.str()
+    assert expected == domains.domain('https://www.example.com').www.str()
